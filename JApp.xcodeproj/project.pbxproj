@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5F47FD9B286DC27900588259 /* ShakeyBellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F47FD9A286DC27900588259 /* ShakeyBellView.swift */; };
 		5F62FC7728673A85001633FA /* CurrencyFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F62FC7628673A85001633FA /* CurrencyFormatterTests.swift */; };
 		5F62FC7928698DFA001633FA /* NSNotificationName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F62FC7828698DFA001633FA /* NSNotificationName.swift */; };
 		5F62FC7B286995D3001633FA /* UITextField+SecureToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F62FC7A286995D3001633FA /* UITextField+SecureToggle.swift */; };
@@ -40,6 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5F47FD9A286DC27900588259 /* ShakeyBellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakeyBellView.swift; sourceTree = "<group>"; };
 		5F62FC6D28673952001633FA /* JAppUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JAppUnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F62FC7628673A85001633FA /* CurrencyFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyFormatterTests.swift; sourceTree = "<group>"; };
 		5F62FC7828698DFA001633FA /* NSNotificationName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSNotificationName.swift; sourceTree = "<group>"; };
@@ -83,6 +85,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5F47FD99286DC25E00588259 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				5F47FD9A286DC27900588259 /* ShakeyBellView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		5F62FC6E28673952001633FA /* JAppUnitTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -163,6 +173,7 @@
 			children = (
 				5FD2A0A42847CB6D001FE814 /* AppDelegate.swift */,
 				5FB0957E285CB78F00337C7B /* MainViewController.swift */,
+				5F47FD99286DC25E00588259 /* Components */,
 				5FD2A0B92847D535001FE814 /* Login */,
 				5FB09569284A214D00337C7B /* Onboarding */,
 				5FB09584285DD50500337C7B /* AccountSummary */,
@@ -312,6 +323,7 @@
 				5FB0959028607EA300337C7B /* Decimal+Utils.swift in Sources */,
 				5F62FC7928698DFA001633FA /* NSNotificationName.swift in Sources */,
 				5FD2A0A92847CB6D001FE814 /* LoginViewController.swift in Sources */,
+				5F47FD9B286DC27900588259 /* ShakeyBellView.swift in Sources */,
 				5FB0958E285F4AA200337C7B /* AccountSummaryCell.swift in Sources */,
 				5FB0956D284A28FE00337C7B /* OnboardingViewController.swift in Sources */,
 				5FB0957F285CB78F00337C7B /* MainViewController.swift in Sources */,
