@@ -1,8 +1,8 @@
 //
 //  AccountSummaryCell.swift
-//  Bankey
+//  JApp
 //
-//  Created by jrasmusson on 2021-11-04.
+//  Created by Jafar on 19.06.2022.
 //
 
 import Foundation
@@ -27,6 +27,10 @@ class AccountSummaryCell: UITableViewCell {
     }
     
     let viewModel: ViewModel? = nil
+    
+    
+    
+    
     
     let typeLabel = UILabel()
     let underlineView = UIView()
@@ -54,6 +58,7 @@ class AccountSummaryCell: UITableViewCell {
 
 extension AccountSummaryCell {
     private func setup() {
+        
         typeLabel.translatesAutoresizingMaskIntoConstraints = false
         typeLabel.font = UIFont.preferredFont(forTextStyle: .caption1)
         typeLabel.adjustsFontForContentSizeCategory = true
@@ -68,30 +73,31 @@ extension AccountSummaryCell {
         nameLabel.text = "Account name"
         
         balanceStackView.translatesAutoresizingMaskIntoConstraints = false
-        balanceStackView.axis = .vertical
         balanceStackView.spacing = 0
-
+        balanceStackView.axis = .vertical
+        
         balanceLabel.translatesAutoresizingMaskIntoConstraints = false
         balanceLabel.font = UIFont.preferredFont(forTextStyle: .body)
-        balanceLabel.textAlignment = .right
         balanceLabel.adjustsFontSizeToFitWidth = true
+        balanceLabel.textAlignment = .right
         balanceLabel.text = "Some balance"
-
+        
         balanceAmountLabel.translatesAutoresizingMaskIntoConstraints = false
         balanceAmountLabel.textAlignment = .right
-        balanceAmountLabel.attributedText = makeFormattedBalance(dollars: "XXX,XXX", cents: "XX")
+        balanceAmountLabel.attributedText = makeFormattedBalance(dollars: "929,466", cents: "23")
         
         chevronImageView.translatesAutoresizingMaskIntoConstraints = false
         let chevronImage = UIImage(systemName: "chevron.right")!.withTintColor(appColor, renderingMode: .alwaysOriginal)
         chevronImageView.image = chevronImage
         
-        contentView.addSubview(typeLabel) // imporant! Add to contentView.
+        
+        contentView.addSubview(typeLabel)
         contentView.addSubview(underlineView)
         contentView.addSubview(nameLabel)
         
         balanceStackView.addArrangedSubview(balanceLabel)
         balanceStackView.addArrangedSubview(balanceAmountLabel)
-            
+        
         contentView.addSubview(balanceStackView)
         contentView.addSubview(chevronImageView)
     }
@@ -100,38 +106,45 @@ extension AccountSummaryCell {
         NSLayoutConstraint.activate([
             typeLabel.topAnchor.constraint(equalToSystemSpacingBelow: topAnchor, multiplier: 2),
             typeLabel.leadingAnchor.constraint(equalToSystemSpacingAfter: leadingAnchor, multiplier: 2),
+            
             underlineView.topAnchor.constraint(equalToSystemSpacingBelow: typeLabel.bottomAnchor, multiplier: 1),
             underlineView.leadingAnchor.constraint(equalToSystemSpacingAfter: leadingAnchor, multiplier: 2),
-            underlineView.widthAnchor.constraint(equalToConstant: 60),
             underlineView.heightAnchor.constraint(equalToConstant: 4),
+            underlineView.widthAnchor.constraint(equalToConstant: 60),
+            
             nameLabel.topAnchor.constraint(equalToSystemSpacingBelow: underlineView.bottomAnchor, multiplier: 2),
             nameLabel.leadingAnchor.constraint(equalToSystemSpacingAfter: leadingAnchor, multiplier: 2),
+            
             balanceStackView.topAnchor.constraint(equalToSystemSpacingBelow: underlineView.bottomAnchor, multiplier: 0),
-            balanceStackView.leadingAnchor.constraint(equalTo: nameLabel.trailingAnchor, constant: 4),
+            balanceStackView.leadingAnchor.constraint(equalToSystemSpacingAfter: nameLabel.trailingAnchor, multiplier: 4),
             trailingAnchor.constraint(equalToSystemSpacingAfter: balanceStackView.trailingAnchor, multiplier: 4),
+            
             chevronImageView.topAnchor.constraint(equalToSystemSpacingBelow: underlineView.bottomAnchor, multiplier: 1),
-            trailingAnchor.constraint(equalToSystemSpacingAfter: chevronImageView.trailingAnchor, multiplier: 1)
+            trailingAnchor.constraint(equalToSystemSpacingAfter: chevronImageView.trailingAnchor, multiplier: 1),
+            
         ])
+        
     }
     
     private func makeFormattedBalance(dollars: String, cents: String) -> NSMutableAttributedString {
-            let dollarSignAttributes: [NSAttributedString.Key: Any] = [.font: UIFont.preferredFont(forTextStyle: .callout), .baselineOffset: 8]
-            let dollarAttributes: [NSAttributedString.Key: Any] = [.font: UIFont.preferredFont(forTextStyle: .title1)]
-            let centAttributes: [NSAttributedString.Key: Any] = [.font: UIFont.preferredFont(forTextStyle: .footnote), .baselineOffset: 8]
-            
-            let rootString = NSMutableAttributedString(string: "$", attributes: dollarSignAttributes)
-            let dollarString = NSAttributedString(string: dollars, attributes: dollarAttributes)
-            let centString = NSAttributedString(string: cents, attributes: centAttributes)
-            
-            rootString.append(dollarString)
-            rootString.append(centString)
-            
-            return rootString
-        }
+        let dollarSignAttributes: [NSAttributedString.Key: Any] = [.font: UIFont.preferredFont(forTextStyle: .callout), .baselineOffset: 8]
+        let dollarAttributes: [NSAttributedString.Key: Any] = [.font: UIFont.preferredFont(forTextStyle: .title1)]
+        let centAttributes: [NSAttributedString.Key: Any] = [.font: UIFont.preferredFont(forTextStyle: .footnote), .baselineOffset: 8]
+        
+        let rootString = NSMutableAttributedString(string: "$", attributes: dollarSignAttributes)
+        let dollarString = NSAttributedString(string: dollars, attributes: dollarAttributes)
+        let centString = NSAttributedString(string: cents, attributes: centAttributes)
+        
+        rootString.append(dollarString)
+        rootString.append(centString)
+        
+        return rootString
+    }
 }
 
 extension AccountSummaryCell {
     func configure(with vm: ViewModel) {
+        
         typeLabel.text = vm.accountType.rawValue
         nameLabel.text = vm.accountName
         balanceAmountLabel.attributedText = vm.balanceAsAttributedString
@@ -142,10 +155,12 @@ extension AccountSummaryCell {
             balanceLabel.text = "Current balance"
         case .CreditCard:
             underlineView.backgroundColor = .systemOrange
-            balanceLabel.text = "Current balance"
+            balanceLabel.text = "Balance"
         case .Investment:
             underlineView.backgroundColor = .systemPurple
             balanceLabel.text = "Value"
         }
     }
 }
+
+
