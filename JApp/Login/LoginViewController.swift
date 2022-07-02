@@ -213,14 +213,14 @@ extension LoginViewController {
             self.subtitleLeadingAnchor?.constant = self.leadingEdgeOnScreen
             self.view.layoutIfNeeded()
         }
-        animator2.startAnimation(afterDelay: 0.5)
+        animator2.startAnimation(afterDelay: 0.3)
         
         let animator3 = UIViewPropertyAnimator(duration: duration*2, curve: .easeInOut) {
             self.titleLabel.alpha = 1
             self.subtitleLabel.alpha = 2
             self.view.layoutIfNeeded()
         }
-        animator3.startAnimation(afterDelay: 1)
+        animator3.startAnimation(afterDelay: 0.5)
     }
 }
  
