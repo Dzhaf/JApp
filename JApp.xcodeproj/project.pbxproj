@@ -12,6 +12,8 @@
 		5F47FD9F286EDA1A00588259 /* AccountSummaryViewController+Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F47FD9E286EDA1A00588259 /* AccountSummaryViewController+Networking.swift */; };
 		5F47FDA3286F4AD700588259 /* ProfileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F47FDA2286F4AD700588259 /* ProfileTests.swift */; };
 		5F47FDA5286F4B8A00588259 /* AccountTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F47FDA4286F4B8A00588259 /* AccountTests.swift */; };
+		5F5EFFEE28745CC50072FCAA /* SkeletonLaodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F5EFFED28745CC40072FCAA /* SkeletonLaodable.swift */; };
+		5F5EFFF028745D8A0072FCAA /* SkeletonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F5EFFEF28745D8A0072FCAA /* SkeletonCell.swift */; };
 		5F62FC7728673A85001633FA /* CurrencyFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F62FC7628673A85001633FA /* CurrencyFormatterTests.swift */; };
 		5F62FC7928698DFA001633FA /* NSNotificationName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F62FC7828698DFA001633FA /* NSNotificationName.swift */; };
 		5F62FC7B286995D3001633FA /* UITextField+SecureToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F62FC7A286995D3001633FA /* UITextField+SecureToggle.swift */; };
@@ -50,6 +52,8 @@
 		5F47FD9E286EDA1A00588259 /* AccountSummaryViewController+Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AccountSummaryViewController+Networking.swift"; sourceTree = "<group>"; };
 		5F47FDA2286F4AD700588259 /* ProfileTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTests.swift; sourceTree = "<group>"; };
 		5F47FDA4286F4B8A00588259 /* AccountTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTests.swift; sourceTree = "<group>"; };
+		5F5EFFED28745CC40072FCAA /* SkeletonLaodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkeletonLaodable.swift; sourceTree = "<group>"; };
+		5F5EFFEF28745D8A0072FCAA /* SkeletonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkeletonCell.swift; sourceTree = "<group>"; };
 		5F62FC6D28673952001633FA /* JAppUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JAppUnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F62FC7628673A85001633FA /* CurrencyFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyFormatterTests.swift; sourceTree = "<group>"; };
 		5F62FC7828698DFA001633FA /* NSNotificationName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSNotificationName.swift; sourceTree = "<group>"; };
@@ -174,6 +178,8 @@
 			isa = PBXGroup;
 			children = (
 				5FB0958D285F4AA200337C7B /* AccountSummaryCell.swift */,
+				5F5EFFED28745CC40072FCAA /* SkeletonLaodable.swift */,
+				5F5EFFEF28745D8A0072FCAA /* SkeletonCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -353,6 +359,7 @@
 				5FB0959228607F0600337C7B /* CurrencyFormatter.swift in Sources */,
 				5FB0959028607EA300337C7B /* Decimal+Utils.swift in Sources */,
 				5F62FC7928698DFA001633FA /* NSNotificationName.swift in Sources */,
+				5F5EFFEE28745CC50072FCAA /* SkeletonLaodable.swift in Sources */,
 				5FD2A0A92847CB6D001FE814 /* LoginViewController.swift in Sources */,
 				5F47FD9B286DC27900588259 /* ShakeyBellView.swift in Sources */,
 				5FB0958E285F4AA200337C7B /* AccountSummaryCell.swift in Sources */,
@@ -361,6 +368,7 @@
 				5FB09586285DD5B100337C7B /* AccountSummaryViewController.swift in Sources */,
 				5FD2A0A52847CB6D001FE814 /* AppDelegate.swift in Sources */,
 				5FB0956B284A218800337C7B /* OnboardingContainerViewController.swift in Sources */,
+				5F5EFFF028745D8A0072FCAA /* SkeletonCell.swift in Sources */,
 				5F47FD9F286EDA1A00588259 /* AccountSummaryViewController+Networking.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
