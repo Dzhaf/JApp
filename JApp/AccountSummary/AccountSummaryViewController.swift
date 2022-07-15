@@ -34,7 +34,7 @@ class AccountSummaryViewController: UIViewController {
         super.viewDidLoad()
         setup()
     }
-
+    
 }
 
 extension AccountSummaryViewController {
@@ -55,7 +55,7 @@ extension AccountSummaryViewController {
         
         tableView.register(AccountSummaryCell.self, forCellReuseIdentifier: AccountSummaryCell.reuseID)
         tableView.register(SkeletonCell.self, forCellReuseIdentifier: SkeletonCell.reuseID)
-
+        
         tableView.rowHeight = AccountSummaryCell.rowHeight
         tableView.tableFooterView = UIView()
         
@@ -93,18 +93,18 @@ extension AccountSummaryViewController {
     }
     
     private func setupSkeletons() {
-          let row = Account.makeSkeleton()
-          accounts = Array(repeating: row, count: 10)
-          
-          configureTableCells(with: accounts)
-      }
+        let row = Account.makeSkeleton()
+        accounts = Array(repeating: row, count: 10)
+        
+        configureTableCells(with: accounts)
+    }
 }
 
 extension AccountSummaryViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard !accountsCellViewModels.isEmpty else { return UITableViewCell() }
         let account = accountsCellViewModels[indexPath.row]
-
+        
         if isLoaded {
             let cell = tableView.dequeueReusableCell(withIdentifier: AccountSummaryCell.reuseID, for: indexPath) as! AccountSummaryCell
             cell.configure(with: account)
@@ -134,17 +134,17 @@ extension AccountSummaryViewController {
     }
     
     @objc func refreshContent() {
-            reset()
-            setupSkeletons()
-            tableView.reloadData()
-            fetchData()
-        }
-        
-        private func reset() {
-            profile = nil
-            accounts = []
-            isLoaded = false
-        }
+        reset()
+        setupSkeletons()
+        tableView.reloadData()
+        fetchData()
+    }
+    
+    private func reset() {
+        profile = nil
+        accounts = []
+        isLoaded = false
+    }
     
 }
 
@@ -153,18 +153,18 @@ extension AccountSummaryViewController {
     private func fetchData() {
         let group = DispatchGroup()
         let userId = String(Int.random(in: 1..<4))
-
+        
         group.enter()
         fetchProfile(forUserId: userId) { result in
             switch result {
             case .success(let profile):
                 self.profile = profile
             case .failure(let error):
-                print(error.localizedDescription)
+                self.displayError(error)
             }
             group.leave()
         }
-
+        
         group.enter()
         fetchAccounts(forUserId: userId) { result in
             switch result {
@@ -175,7 +175,7 @@ extension AccountSummaryViewController {
             }
             group.leave()
         }
-            
+        
         group.notify(queue: .main) {
             self.tableView.refreshControl?.endRefreshing()
             
@@ -202,5 +202,32 @@ extension AccountSummaryViewController {
                                          accountName: $0.name,
                                          balance: $0.amount)
         }
+    }
+    
+    private func displayError(_ error: NetworkError) {
+        let title: String
+        let message: String
+        switch error {
+        case .serverError:
+        title = "Server Error"
+        message = "Ensure you are connected to the internet  Please try again."
+        case .decodingError:
+        title = "Decoding Error"
+        message = "We could not process your request. Please try again."
+            
+        }
+        self.showErrorAlert(title: title, message: message)
+        
+        
+    }
+    
+    private func showErrorAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title,
+                                      message: message,
+                                      preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        
+        present(alert, animated: true, completion: nil)
     }
 }
